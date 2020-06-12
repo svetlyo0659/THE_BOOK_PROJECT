@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" crossorigin="anonymous"
+        href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/solar/bootstrap.min.css">
+  <link rel="stylesheet" crossorigin="anonymous"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Hello, world!</title>
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Books</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form id="searchBooks" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <a id="user" class="nav-link btn" data-toggle="modal" data-target="#changePasswordModal">
+      <i class="fa fa-user"></i>
+    </a>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div id="books" class="row no-gutters justify-content-center">
+    &nbsp;
+  </div>
+</div>
+
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordModalTitle">Change Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="oldPassword" class="col-form-label">Old Password:</label>
+            <input type="password" class="form-control" id="oldPassword" aria-describedby="oldPasswordHelp">
+            <small id="oldPasswordHelp" class="form-text text-muted">This is your current password.</small>
+          </div>
+          <div class="form-group">
+            <label for="newPassword" class="col-form-label">New Password:</label>
+            <input type="password" class="form-control" id="newPassword" aria-describedby="newPasswordHelp">
+            <small id="newPasswordHelp" class="form-text text-muted">This is your new password.</small>
+          </div>
+          <div class="form-group">
+            <label for="passwordConfirmation" class="col-form-label">Password Confirmation:</label>
+            <input type="password" class="form-control" id="passwordConfirmation"
+                   aria-describedby="passwordConfirmationHelp">
+            <small id="passwordConfirmationHelp" class="form-text text-muted">Retype your new password.</small>
+          </div>
+        </form>
+        <div class="alert alert-warning" role="alert" style="display:none">
+          Failed! Please check your passwords!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="changePasswordButton" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="bookView" tabindex="-1" role="dialog" aria-labelledby="bookViewTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookViewTitle">Book View</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <small id="bookViewAuthor">Valentin Valchev / 2020</small>
+        <div id="bookViewComments" class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            <div class="d-flex w-100 justify-content-between">
+              <h5>ivan</h5>
+              <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
+              blandit.</p>
+          </a>
+        </div>
+        <form id="bookViewForm">
+          <div class="form-group">
+            <label for="reviewText">Review:</label>
+            <textarea class="form-control" id="reviewText" rows="3"></textarea>
+          </div>
+          <input type="hidden" id="reviewBookId" value="-1"/>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="alert alert-warning m-1" role="alert" style="display:none">
+          Unable to post your review, make sure you don't use HTML tags.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="site.js"></script>
+</body>
+</html>
